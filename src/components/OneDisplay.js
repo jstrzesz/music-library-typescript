@@ -33,6 +33,8 @@ const OneDisplay = (props) => {
             }}>
                 <h2>{props.d.trackName}</h2>
                 <h3>{props.d.collectionName}</h3>
+                <h4>{props.d.primaryGenreName}</h4>
+                <h4>{props.d.releaseDate}</h4>
             </div>
         )
     }
