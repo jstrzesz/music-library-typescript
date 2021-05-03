@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const OneDisplay = (props) => {
+const GalleryItem = (props) => {
     let [view, setView] = useState(false)
 
     const simpleView = () => {
@@ -43,8 +43,9 @@ const OneDisplay = (props) => {
         <div onClick={() => setView(!view)}
         style={{'display': 'inline-block'}}>
             {view ? detailView() : simpleView()}
+            {/* One Gallery Item */}
         </div>
     )
 } 
 
-export default OneDisplay
+export default GalleryItem

@@ -1,12 +1,12 @@
 import './App.css';
 import { useEffect, useState } from 'react'
-import Display from './components/Display'
-import Search from './components/Search'
+import Gallery from './components/Gallery'
+import SearchBar from './components/SearchBar'
 
 function App() {
-  let [search, setSearch] = useState('')
+  let [searchTerm, setSearchTerm] = useState('')
   let [data, setData] = useState([])
-  let [message, setMessage] = useState('Search for a Band')
+  let [message, setMessage] = useState('Search for Music!')
 
   function toTitleCase(str) {
     return str.replace(
@@ -18,9 +18,9 @@ function App() {
   }
 
   useEffect(() => {
-    if (search) {
-      document.title=`${search} Music`
-      fetch(`https://itunes.apple.com/search?term=${search}`)
+    if (searchTerm) {
+      document.title=`${searchTerm} Music`
+      fetch(`https://itunes.apple.com/search?term=${searchTerm}`)
       .then(response => response.json())
       .then(resData => {
         console.log(resData)
@@ -32,19 +32,19 @@ function App() {
       })
       .catch(err => setMessage('An Error has Occurred!'))
     }
-  }, [search])
+  }, [searchTerm])
 
   const handleSearch = (e, term) => {
     e.preventDefault()
     term = toTitleCase(term)
-    setSearch(term)
+    setSearchTerm(term)
   }
 
   return (
     <div className="App">
-      <Search handleSearch={handleSearch} />
+      <SearchBar handleSearch={handleSearch} />
       {message}
-      <Display data={data} />
+      <Gallery data={data} />
     </div>
   );
 }
