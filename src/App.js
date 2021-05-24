@@ -20,18 +20,17 @@ function App() {
   useEffect(() => {
     if (searchTerm) {
       document.title=`${searchTerm} Music`
-      fetch(`https://itunes.apple.com/search?term=${searchTerm}`)
-      .then(response => response.json())
-      .then(resData => {
-        console.log(resData)
-        if (resData.results.length > 0) {
-          return setData(resData.results)
+      const fetchData = async () => {
+        const response = await fetch(`https://itunes.apple.com/search?term=${searchTerm}`)
+        const resData = await response.json()
+        if(resData.results.length > 0) {
+          setData(resData.results)
         } else {
-          return setMessage('Not Found.')
+          setMessage('Not Found')
         }
-      })
-      .catch(err => setMessage('An Error has Occurred!'))
-    }
+      }
+      fetchData()
+  }
   }, [searchTerm])
 
   const handleSearch = (e, term) => {
