@@ -8,15 +8,6 @@ function App() {
   let [data, setData] = useState([])
   let [message, setMessage] = useState('Search for Music!')
 
-  function toTitleCase(str) {
-    return str.replace(
-      /\w\S*/g,
-      function(txt) {
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-      }
-    );
-  }
-
   useEffect(() => {
     if (searchTerm) {
       document.title=`${searchTerm} Music`
@@ -35,7 +26,6 @@ function App() {
 
   const handleSearch = (e, term) => {
     e.preventDefault()
-    term = toTitleCase(term)
     setSearchTerm(term)
   }
 
