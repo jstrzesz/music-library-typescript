@@ -26,7 +26,7 @@ const GalleryItem = (props) => {
                 'border': '1px solid black',
                 'margin' : '2px',
                 'position': 'relative',
-                'backgroundImage': `url(${props.d.artworkUrl100})`,
+                'backgroundImage': `url(${props.item.artworkUrl100})`,
                 'backgroundRepeat': 'no-repeat',
                 'backgroundSize': 'cover',
                 'color': 'white'
